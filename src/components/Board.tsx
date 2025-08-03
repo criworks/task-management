@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import {
-  DndContext, DragEndEvent, DragOverlay, useSensor, useSensors, PointerSensor, DragStartEvent
+  DndContext, DragEndEvent, DragOverlay, useSensor, useSensors, PointerSensor, DragStartEvent, closestCorners
 } from '@dnd-kit/core';
 import { arrayMove, SortableContext, horizontalListSortingStrategy } from '@dnd-kit/sortable';
 import List from '@/components/List';
