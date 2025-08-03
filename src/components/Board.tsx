@@ -156,7 +156,7 @@ const Board = () => {
       let finalNewIndex: number = -1; // Usamos un nuevo nombre para evitar confusión con newIndex
 
       if (overType === 'List') {
-        targetOverListId = over.id;
+        targetOverListId = String(over.id);
         // Si se suelta sobre otra lista, usamos su índice preciso en el contexto sortable horizontal.
         finalNewIndex = over.data.current?.sortable?.index !== undefined
           ? over.data.current.sortable.index
@@ -169,7 +169,7 @@ const Board = () => {
         }
       } else {
         // Fallback: si over.type es undefined, asumimos que es el ID de una lista (ej. soltar sobre el botón de añadir lista).
-        targetOverListId = over.id;
+        targetOverListId = String(over.id);
         finalNewIndex = lists.findIndex(list => list.id === targetOverListId);
       }
 
