@@ -185,6 +185,11 @@ const Board = () => {
     ? lists.flatMap(list => list.tasks).find(task => task.id === activeId)
     : null;
   
+  // Obtener el ID de la lista a la que pertenece la tarea activa
+  const activeTaskListId = activeTask
+    ? lists.find(list => list.tasks.some(task => task.id === activeTask.id))?.id || null
+    : null;
+
   const activeList = activeId
     ? lists.find(list => list.id === activeId)
     : null;
@@ -316,9 +321,9 @@ const Board = () => {
         </SortableContext>
       </div>
       <DragOverlay>
-        {activeTask ? <Card id={activeTask.id} content={activeTask.content} /> : null}
+        {activeTask && activeTaskListId ? <Card id={activeTask.id} content={activeTask.content} listId={activeTaskListId} /> : null}
         {activeList ? (
-          <div className="bg-gray-100 rounded-lg w-72 p-4 flex-shrink-0 opacity-80 shadow-xl border border-blue-500 z-10"> {/* Added opacity, shadow-xl, border, z-10 */}
+          <div className="bg-gray-100 rounded-lg w-72 p-4 flex-shrink-0 opacity-80 shadow-xl border border-blue-500 z-10">
             <h2 className="font-semibold text-lg mb-4 text-gray-800">{activeList.title}</h2>
             {activeList.tasks.map((task) => (
               <Card key={task.id} id={task.id} content={task.content} listId={activeList.id} />
