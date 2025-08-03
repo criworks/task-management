@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import {
-  DndContext, DragEndEvent, DragOverlay, useSensor, useSensors, PointerSensor, closestCorners
+  DndContext, DragEndEvent, DragOverlay, useSensor, useSensors, PointerSensor, DragStartEvent
 } from '@dnd-kit/core';
 import { arrayMove, SortableContext, horizontalListSortingStrategy } from '@dnd-kit/sortable';
 import List from '@/components/List';
@@ -79,7 +79,7 @@ const Board = () => {
     })
   );
 
-  const handleDragStart = (event: any) => {
+  const handleDragStart = (event: DragStartEvent) => {
     setActiveId(event.active.id);
   };
 
